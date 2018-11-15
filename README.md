@@ -1,3 +1,3 @@
 # flujo_cajas
 
-Ejemplo basico de un flujo de cajas
+Ejercicio basico basico para curso de programacion "Aprendiendo a programar con django"
