@@ -3,7 +3,7 @@ MES = "MES"
 HORA = "HORA"
 
 TIPO_TIEMPO = (
-    (HORA, "Hora")
-    (DIA, "Dia")
+    (HORA, "Hora"),
+    (DIA, "Dia"),
     (MES, "Mes")
 )

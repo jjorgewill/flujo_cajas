@@ -10,7 +10,7 @@ class Moneda(models.Model):
 
 class Activo(models.Model):
     nombre_activo = models.CharField(max_length=255)
-    valor_activo = models.DecimalField(decimal_places=2)
+    valor_activo = models.DecimalField(decimal_places=2, max_digits=10)
     moneda = models.ForeignKey(Moneda, on_delete=models.CASCADE)
     tiempo = models.CharField(max_length=30, choices=properties.TIPO_TIEMPO)
     valor_tiempo = models.PositiveIntegerField()
