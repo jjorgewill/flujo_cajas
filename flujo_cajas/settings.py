@@ -25,7 +25,8 @@ SECRET_KEY = 'lh60xi8iq!3(&y%+wff*tmjuqi5qi*1pv#=tu9@eaj!yd#+y!s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+SITE_ID=1
 
 
 # Application definition
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.flujo',
 ]
 
 MIDDLEWARE = [
@@ -112,6 +114,12 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = '' #my gmail password
+EMAIL_HOST_USER = '' #my gmail username
+EMAIL_PORT = 587
 
 
 # Static files (CSS, JavaScript, Images)
