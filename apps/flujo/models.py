@@ -16,4 +16,19 @@ class Activo(models.Model):
     valor_tiempo = models.PositiveIntegerField()
 
 
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=255)
+    tipo = models.CharField(max_length=30, choices=properties.TIPO_CATEGORIA)
+
+
+class SubCategoria(models.Model):
+    nombre = models.CharField(max_length=255)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+
+
+class Movimiento(models.Model):
+    fecha = models.DateField()
+    nombre_dia = models.CharField(max_length=30, choices=properties.DIAS_SEMANA)
+    valor = models.DecimalField(decimal_places=2, max_digits=10)
+    subcategoria = models.ForeignKey(SubCategoria, on_delete=models.CASCADE)
 
