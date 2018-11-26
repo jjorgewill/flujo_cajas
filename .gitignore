@@ -14,8 +14,5 @@ CACHE
 /atlassian-ide-plugin.xml
 /.project
 *.retry
-/.vagrant
-/envecomex360
-/node/node_modules/
 /flujo_cajas/apps/flujo/static/
 
