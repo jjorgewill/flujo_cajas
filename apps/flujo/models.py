@@ -10,7 +10,7 @@ class Moneda(models.Model):
 class Activo(models.Model):
     nombre_activo = models.CharField(max_length=255)
     valor_activo = models.DecimalField(decimal_places=2)
-    moneda = models.ForeignKey(Moneda,on_delete=models.CASCADE())
+    moneda = models.ForeignKey(Moneda,on_delete=models.CASCADE)
     tiempo = models.CharField(max_length=30,choices=properties.TIPO_TIEMPO)
     valor_tiempo =  models.PositiveIntegerField()
 
@@ -20,7 +20,7 @@ class Acredor(models.Model):
 
 
 class Obligaciones(models.Model):
-    acredor_obligacion = models.ForeignKey(Acredor, on_delete=models.CASCADE())
+    acredor_obligacion = models.ForeignKey(Acredor, on_delete=models.CASCADE)
     saldo_obligacion =models.DecimalField()
     cuota_obligacion = models.DecimalField()
     tiempo = models.CharField(max_length=30, choices=properties.TIPO_TIEMPO)

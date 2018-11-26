@@ -1,25 +1,33 @@
 DIA = "DIA"
 MES = "MES"
 HORA = "HORA"
-SUMA = "Suma"
-RESTA =  "Resta"
-LUNES = "Lunes"
-MARTES = "Mrtes"
-
+SUMA = "SUMA"
+RESTA = "RESTA"
+LUNES = "LUNES"
+MARTES = "MARTES"
+MIERCOLES = "MIERCOLES"
+JUEVES = "JUEVES"
+VIERNES = "VIERNES"
+SABADO = "SABADO"
+DOMINGO = "DOMINGO"
 
 TIPO_TIEMPO = (
     (HORA, "Hora"),
     (DIA, "Dia"),
-    (MES, "Mes")
+    (MES, "Mes"),
 )
 
-TIPO_CATEGORIA = (
+TIPO_MOVIMIENTO = (
     (SUMA, "Suma"),
     (RESTA, "Resta"),
 )
 
-
-DIAS_SEMANA = (
+TIPO_DIA_SEMANA = (
     (LUNES, "Lunes"),
-    (MARTES, "Mrtes"),
+    (MARTES, "Martes"),
+    (MIERCOLES, "Miercoles"),
+    (JUEVES, "Jueves"),
+    (VIERNES, "Viernes"),
+    (SABADO, "Sabado"),
+    (DOMINGO, "Domingo"),
 )
