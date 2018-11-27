@@ -7,6 +7,7 @@ class FrmActivo(forms.ModelForm):
 
     class Meta:
         model = Activo
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

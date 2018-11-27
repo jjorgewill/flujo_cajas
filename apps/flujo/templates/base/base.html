@@ -32,7 +32,7 @@
                         Acreedor
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'view_activo' %}">Listar</a>
+                        <a class="dropdown-item" href="#">Listar</a>
                         <a class="dropdown-item" href="#">Crear</a>
                     </div>
                 </li>
@@ -42,8 +42,8 @@
                         Activo
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Listar</a>
-                        <a class="dropdown-item" href="#">Crear</a>
+                        <a class="dropdown-item" href="{% url 'view_activo' %}">Listar</a>
+                        <a class="dropdown-item" href="{% url 'create_activo' %}">Crear</a>
                     </div>
                 </li>
             </ul>
