@@ -18,6 +18,9 @@ class Activo(models.Model):
     tiempo = models.CharField(max_length=30, choices=properties.TIPO_TIEMPO)
     valor_tiempo = models.PositiveIntegerField()
 
+    def __str__(self):
+        return self.nombre_activo
+
 
 class Acredor(models.Model):
     nombre = models.CharField(max_length=200)
