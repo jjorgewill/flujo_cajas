@@ -4,6 +4,7 @@ from apps.flujo import views
 
 urlpatterns = [
     path('home/', views.Home.as_view(), name='view_home'),
-
+    #activos
     path('activo/listar/', views.ActivoView.as_view(), name='view_activo'),
+    path('activo/crear/', views.ActivoCreateView.as_view(), name='create_activo'),
 ]
