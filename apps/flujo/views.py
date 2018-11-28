@@ -5,6 +5,22 @@ from django.views import generic
 from apps.flujo import models, forms
 
 
+class ActivoUpdateView(generic.UpdateView):
+    template_name = 'activo/form_activo.html'
+    form_class = forms.FrmActivo
+    model = models.Activo
+
+    def form_valid(self, form):
+        self.object = form.save()
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
+
+    def get_success_url(self):
+        return reverse('view_activo')
+
+
 class ActivoCreateView(generic.CreateView):
     template_name = 'activo/form_activo.html'
     form_class = forms.FrmActivo
