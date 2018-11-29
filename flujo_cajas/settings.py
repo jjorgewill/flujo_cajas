@@ -26,7 +26,7 @@ SECRET_KEY = 'lh60xi8iq!3(&y%+wff*tmjuqi5qi*1pv#=tu9@eaj!yd#+y!s'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-SITE_ID=1
+SITE_ID = 1
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.flujo',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
