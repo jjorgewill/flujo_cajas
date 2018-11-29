@@ -7,28 +7,28 @@
 {% block title %}{% trans "Log in" %}{% endblock %}
 
 {% block container %}
-<form method="post" action="">
-    {% csrf_token %}
+  <div class="card-body">
+        <h5 class="card-title">Autenticar</h5>
+            <form method="post" action="">
+                {% csrf_token %}
+                  <div class="form-group">
+                    <label for="id_username">Usuario</label>
+                    {% render_field form.username autocomplete='off' class="form-control" %}
+                    <small id="emailHelp" class="form-text text-muted">Por favor digite el usuario.</small>
+                  </div>
 
+                  <div class="form-group">
+                    <label for="id_password">Clave</label>
+                    {% render_field form.password autocomplete='off' class="form-control" %}
+                    <small id="emailHelp" class="form-text text-muted">Por favor digite la clave.</small>
+                  </div>
 
-      <div class="form-group">
-        <label for="id_username">Usuario</label>
-        {% render_field form.username autocomplete='off' class="form-control" %}
-        <small id="emailHelp" class="form-text text-muted">Por favor digite el usuario.</small>
-      </div>
-
-      <div class="form-group">
-        <label for="id_password">Clave</label>
-        {% render_field form.password autocomplete='off' class="form-control" %}
-        <small id="emailHelp" class="form-text text-muted">Por favor digite la clave.</small>
-      </div>
-
-    <input type="submit" class="btn btn-info" value="{% trans 'Log in' %}" />
-    <input type="hidden" name="next" value="{{ next }}" />
-</form>
-
-<p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
-<p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</p>
+                <input type="submit" class="btn btn-info" value="{% trans 'Log in' %}" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+    <p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
+    <p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</p>
+  </div>
 {% endblock %}
 
 

@@ -1,14 +1,22 @@
 {% extends "registration/registration_base.html" %}
 {% load i18n %}
 
+{% load widget_tweaks %}
+{% load staticfiles %}
+
 {% block title %}{% trans "Register for an account" %}{% endblock %}
 
-{% block content %}
-<form method="post" action="">
+{% block container %}
+  <div class="card-body">
+    <h5 class="card-title">Registro</h5>
+    <form method="post" action="">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="{% trans 'Submit' %}" />
 </form>
+  </div>
+</div>
+
 {% endblock %}
 
 
