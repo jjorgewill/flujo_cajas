@@ -66,7 +66,13 @@ class ActivoView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['frm_filter'] = self.filter.form
+        pk = self.kwargs.get("pk")
+        context['frm_activo'] = forms.FrmActivo(self.request.POST or None,
+                                                instance=models.Activo.objects.filter(pk=pk).first())
         return context
+
+    def post(self, request, *args, **kwargs):
+        print("a")
 
 
 class Home(SecurityMixin, generic.TemplateView):
