@@ -4,6 +4,7 @@ from django.views import generic
 from django.contrib import messages
 
 from apps.flujo import models, forms
+from apps.flujo.filters import ActivoFilter
 from apps.flujo.mixin import SecurityMixin
 
 
@@ -55,10 +56,17 @@ class ActivoView(generic.ListView):
     context_object_name = 'activos'
     model = models.Activo
     paginate_by = 2
+    filter = None
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     return context
+    def get_queryset(self, **kwargs):
+        filter = ActivoFilter(self.request.GET, queryset=super().get_queryset())
+        self.filter = filter
+        return filter.qs.order_by('id')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['frm_filter'] = self.filter.form
+        return context
 
 
 class Home(SecurityMixin, generic.TemplateView):
