@@ -4,6 +4,7 @@ from django.views import generic
 from django.contrib import messages
 
 from apps.flujo import models, forms
+from apps.flujo.mixin import SecurityMixin
 
 
 class ActivoDeleteView(generic.DeleteView):
@@ -60,5 +61,5 @@ class ActivoView(generic.ListView):
     #     return context
 
 
-class Home(generic.TemplateView):
+class Home(SecurityMixin, generic.TemplateView):
     template_name = 'home/login.html'

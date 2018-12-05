@@ -12,4 +12,3 @@ class SecurityMixin(object):
             return super().dispatch(request, *args, **kwargs)
         else:
             return HttpResponseRedirect(redirect_to=reverse('login'))
-        return super().dispatch(request, *args, **kwargs)
