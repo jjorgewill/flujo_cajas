@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 
+{% load widget_tweaks %}
 {% block container %}
 
 {% for message in messages %}
@@ -11,8 +12,7 @@
 <form method="get" class="form-inline" enctype="multipart/form-data">
     {% csrf_token %}
           <div class="form-group ">
-            <label for="">Nombre de activo</label>
-            {{frm_filter.nombre_activo__icontains}}
+               {% render_field frm_filter.nombre_activo__icontains autocomplete='off' placeholder='Nombre de activo' class="form-control" %}
             {{frm_filter.nombre_activo__icontains.errors}}
           </div>
     <button type="submit" class="btn btn-primary">Buscar</button>
