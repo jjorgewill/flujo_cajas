@@ -9,7 +9,7 @@ class ActivoFilter(django_filters.FilterSet):
     class Meta:
         model = models.Activo
         fields = {
-            'nombre_activo': ['contains'], #contain, exact, iexact, lte, gte, lt, gt
+            'nombre_activo': ['icontains'], #contain, exact, iexact, lte, gte, lt, gt
              #'valor_activo': ['lte','gte'],
             # 'close_time': ['lte','gte'],
         }

@@ -8,12 +8,12 @@
     {% endif %}
 {% endfor %}
 
-<form method="get" enctype="multipart/form-data">
+<form method="get" class="form-inline" enctype="multipart/form-data">
     {% csrf_token %}
-          <div class="form-group">
+          <div class="form-group ">
             <label for="">Nombre de activo</label>
-            {{frm_filter.nombre_activo__contains}}
-            {{frm_filter.nombre_activo__contains.errors}}
+            {{frm_filter.nombre_activo__icontains}}
+            {{frm_filter.nombre_activo__icontains.errors}}
           </div>
     <button type="submit" class="btn btn-primary">Buscar</button>
 </form>
