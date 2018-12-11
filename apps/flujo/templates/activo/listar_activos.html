@@ -8,7 +8,7 @@
             <div role="alert" class="alert alert-{{ message.tags }}"> {{ message }}</div>
     {% endif %}
 {% endfor %}
-<form method="get" action="{% url 'view_activo' %}" class="form-inline" enctype="multipart/form-data">
+<form method="get" id="id_buscar" action="{% url 'view_activo' %}" class="form-inline" enctype="multipart/form-data">
     {% csrf_token %}
           <div class="form-group ">
                {% render_field frm_filter.nombre_activo__icontains autocomplete='off' placeholder='Nombre de activo' class="form-control" %}
@@ -120,5 +120,10 @@
     {% if frm_activo.instance.id > 0 %}
     $('#id_eliminar').modal('show')
     {%endif%}
+
+    $("#id_nombre_activo__icontains").on('focusout',function(){
+        $("#id_buscar").submit()
+    })
+
 </script>
 {% endblock %}
