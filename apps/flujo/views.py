@@ -6,6 +6,9 @@ from django.contrib import messages
 from apps.flujo import models, forms
 from apps.flujo.filters import ActivoFilter
 from apps.flujo.mixin import SecurityMixin
+from mail_templated import send_mail
+
+from flujo_cajas.settings import EMAIL_HOST_USER
 
 
 class ActivoDeleteView(generic.DeleteView):
@@ -24,6 +27,8 @@ class ActivoUpdateView(generic.UpdateView):
 
     def form_valid(self, form):
         self.object = form.save()
+        email = 'correo@gmail.com'
+        send_mail('emails/activo.tpl', {'nombre':'Jorge','edad':78}, EMAIL_HOST_USER, [email])
         return super().form_valid(form)
 
     def form_invalid(self, form):
