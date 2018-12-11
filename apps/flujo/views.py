@@ -51,7 +51,7 @@ class ActivoCreateView(generic.CreateView):
         return reverse('view_activo')
 
 
-class ActivoView(generic.ListView):
+class ActivoView(SecurityMixin, generic.ListView):
     template_name = 'activo/listar_activos.html'
     context_object_name = 'activos'
     model = models.Activo
@@ -70,9 +70,6 @@ class ActivoView(generic.ListView):
         context['frm_activo'] = forms.FrmActivo(self.request.POST or None,
                                                 instance=models.Activo.objects.filter(pk=pk).first())
         return context
-
-    def post(self, request, *args, **kwargs):
-        print("a")
 
 
 class Home(SecurityMixin, generic.TemplateView):
