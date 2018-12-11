@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+
+{% block container %}
+
+{% for message in messages %}
+    {% if message.tags %}
+            <div role="alert" class="alert alert-{{ message.tags }}"> {{ message }}</div>
+    {% endif %}
+{% endfor %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+          <div class="form-group">
+            <label for="">Nombre de activo</label>
+            {{form.nombre_activo}}
+            {{form.nombre_activo.errors}}
+          </div>
+          <div class="form-group">
+            <label for="">Valor de activo</label>
+            {{form.valor_activo}}
+            {{form.valor_activo.errors}}
+          </div>
+          <div class="form-group">
+            <label for="">Moneda</label>
+            {{form.moneda}}
+            {{form.moneda.errors}}
+          </div>
+          <div class="form-group">
+            <label for="">Tiempo</label>
+            {{form.tiempo}}
+            {{form.tiempo.errors}}
+          </div>
+          <div class="form-group">
+            <label for="">Valor de tiempo</label>
+            {{form.valor_tiempo}}
+            {{form.valor_tiempo.errors}}
+          </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+{% endblock %}

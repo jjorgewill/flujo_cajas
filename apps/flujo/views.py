@@ -4,7 +4,7 @@ from django.views import generic
 from django.contrib import messages
 
 from apps.flujo import models, forms
-from apps.flujo.filters import ActivoFilter
+from apps.flujo.filters import ActivoFilter, ObligacionFilter
 from apps.flujo.mixin import SecurityMixin
 from mail_templated import send_mail
 
@@ -74,6 +74,72 @@ class ActivoView(SecurityMixin, generic.ListView):
         pk = self.kwargs.get("pk")
         context['frm_activo'] = forms.FrmActivo(self.request.POST or None,
                                                 instance=models.Activo.objects.filter(pk=pk).first())
+        return context
+
+
+class ObligacionesDeleteView(generic.DeleteView):
+    template_name = 'obligacion/delete_obligacion.html'
+    model = models.Obligaciones
+    success_url = reverse_lazy('view_obligacion')
+    #
+    # def get_success_url(self):
+    #     return reverse('view_activo')
+
+
+class ObligacionesUpdateView(generic.UpdateView):
+    template_name = 'obligacion/form_obligacion.html'
+    form_class = forms.FrmActivo
+    model = models.Obligaciones
+
+    def form_valid(self, form):
+        self.object = form.save()
+        email = 'correo@gmail.com'
+        send_mail('emails/activo.tpl', {'nombre':'Jorge','edad':78}, EMAIL_HOST_USER, [email])
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
+
+    def get_success_url(self):
+        return reverse('view_activo')
+
+
+class ObligacionesCreateView(generic.CreateView):
+    template_name = 'obligacion/form_obligacion.html'
+    form_class = forms.FrmObligacion
+    model = models.Obligaciones
+
+    def form_valid(self, form):
+        self.object = form.save()
+        messages.success(self.request, 'Su Activo se ha guardado correctamente.')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Lo sentimos no se ha podido procesar la solicitud.')
+        return self.render_to_response(self.get_context_data(form=form))
+
+    def get_success_url(self):
+        return reverse('view_activo')
+
+
+class ObligacionesView(SecurityMixin, generic.ListView):
+    template_name = 'obligacion/listar_obligacion.html'
+    context_object_name = 'obligaciones'
+    model = models.Obligaciones
+    paginate_by = 2
+    filter = None
+
+    def get_queryset(self, **kwargs):
+        filter = ObligacionFilter(self.request.GET, queryset=super().get_queryset())
+        self.filter = filter
+        return filter.qs.order_by('id')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['frm_filter'] = self.filter.form
+        pk = self.kwargs.get("pk")
+        context['frm_obligacion'] = forms.FrmActivo(self.request.POST or None,
+                                                instance=models.Obligaciones.objects.filter(pk=pk).first())
         return context
 
 

@@ -13,3 +13,13 @@ class ActivoFilter(django_filters.FilterSet):
              #'valor_activo': ['lte','gte'],
             # 'close_time': ['lte','gte'],
         }
+
+class ObligacionFilter(django_filters.FilterSet):
+
+    class Meta:
+        model = models.Obligaciones
+        fields = {
+            'acredor_obligacion': ['exact'], #contain, exact, iexact, lte, gte, lt, gt
+             #'valor_activo': ['lte','gte'],
+            # 'close_time': ['lte','gte'],
+        }
