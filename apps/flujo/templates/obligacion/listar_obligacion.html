@@ -33,7 +33,7 @@
     </tr>
     </thead>
     <tbody>
-    {% for obj in activos %}
+    {% for obj in obligaciones %}
         <tr>
             <th scope="row">{{ forloop.counter }}</th>
             <td>{{obj.nombre_activo}}</td>
@@ -42,8 +42,8 @@
             <td>{{obj.tiempo}}</td>
             <td>{{obj.valor_tiempo}}</td>
             <td>
-                <a href="{% url 'update_modal_activo' obj.id %}" class="btn btn-outline-primary">Editar</a>
-                <a href="{% url 'delete_activo' obj.id %}" class="btn btn-outline-danger">Eliminar</a>
+                <a href="{% url 'update_modal_obligacion' obj.id %}" class="btn btn-outline-primary">Editar</a>
+                <a href="{% url 'delete_obligacion' obj.id %}" class="btn btn-outline-danger">Eliminar</a>
             </td>
         </tr>
     {% endfor %}

@@ -26,6 +26,7 @@ class ActivoUpdateView(generic.UpdateView):
     model = models.Activo
 
     def form_valid(self, form):
+        messages.success(self.request, 'Su Activo ha sido editado.')
         self.object = form.save()
         email = 'correo@gmail.com'
         send_mail('emails/activo.tpl', {'nombre':'Jorge','edad':78}, EMAIL_HOST_USER, [email])
